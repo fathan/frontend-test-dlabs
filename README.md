@@ -1,6 +1,10 @@
 # Frontend Developer Test at PT. Dlabs Indonesia Infotech
 CMS Content management system administrator dashboard for user.
 
+## DEMO APP
+
+[frontend-test-dlabs.vercel.com](https://frontend-test-dlabs.vercel.com)
+
 ## Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
