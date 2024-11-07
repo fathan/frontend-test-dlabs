@@ -1,0 +1,47 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Define ANSI color escape codes
+GREEN='\033[0;32m'
+RESET='\033[0m' # Reset color
+
+# Function to print a horizontal line
+print_horizontal_line() {
+  printf "\n"
+  printf -- "-%.0s" {1..30}
+  printf "\n"
+}
+
+# test 
+print_horizontal_line
+echo -e "\n${GREEN}Run Test${RESET}"
+print_horizontal_line
+npm run test
+
+# format 
+# print_horizontal_line
+# echo -e "\n${GREEN}Format Codes${RESET}"
+# print_horizontal_line
+# npm run format 
+
+# lint 
+print_horizontal_line
+echo -e "\n${GREEN}Lint Projects${RESET}"
+print_horizontal_line
+npm run lint
+
+# sonarqube
+# need to analyze if this is needed in pipeline, 
+# as that this could hold down the development speed process, the scanning could take a long time
+# print_horizontal_line
+# echo -e "\n${GREEN}Check Smelly Codes${RESET}"
+# print_horizontal_line
+# npm run sonar
+
+# build 
+print_horizontal_line
+echo -e "\n${GREEN}Build Code${RESET}"
+print_horizontal_line
+npm run build
+
+

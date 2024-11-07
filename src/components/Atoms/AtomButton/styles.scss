@@ -1,0 +1,143 @@
+$prefixClass: 'ss';
+
+$variants: (
+  'primary': (
+    'base': 'bg-blue-500 hover:bg-blue-400 text-white', 
+    'outline': 'bg-white border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white',
+    'transparent': 'border-transparent text-blue-500 hover:bg-blue-500 hover:text-blue-500',
+  ),
+  'primary-orange': (
+    'base': 'bg-yellow-500 hover:bg-yellow-400 text-white', 
+    'outline': 'bg-white border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-white',
+    'transparent': 'border-transparent text-yellow-500 hover:bg-yellow-500 hover:text-yellow-500',
+  ),
+  'secondary': (
+    'base': 'bg-gray-500 hover:bg-gray-600 text-white', 
+    'outline': 'bg-white border-gray-600 text-gray-600 hover:bg-gray-500 hover:text-white',
+    'transparent': 'border-transparent text-gray-600 hover:bg-gray-200 hover:text-gray-600',
+  ),
+  'success': (
+    'base': 'bg-green-500 hover:bg-green-600 text-white',
+    'outline': 'bg-white border-green-500 text-green-500 hover:bg-green-600 hover:text-white',
+    'transparent': 'border-transparent text-green-500 hover:bg-green-500 hover:text-green-500',
+  ),
+  'warning': (
+    'base': 'bg-yellow-400 hover:bg-yellow-300 text-white',
+    'outline': 'bg-white border-yellow-600 text-yellow-600 hover:bg-yellow-300 hover:text-white',
+    'transparent': 'border-transparent text-yellow-600 hover:bg-yellow-600 hover:text-yellow-600',
+  ),
+  'dark': (
+    'base': 'bg-gray-700 hover:bg-gray-900 text-white',
+    'outline': 'bg-white border-gray-600 text-gray-600 hover:bg-gray-600 hover:text-white',
+    'transparent': 'border-transparent text-gray-600 hover:bg-gray-200 hover:text-gray-600',
+  ),
+  'danger': (
+    'base': 'bg-red-500 hover:bg-red-600 text-white',
+    'outline': 'bg-white border-red-500 text-red-500 hover:bg-red-500 hover:text-white',
+    'transparent': 'border-transparent text-red-500 hover:bg-red-500 hover:text-red-500',
+  )
+);
+
+@mixin handleMergeStyle($selector, $childrenColor: 'text-gray-100') {
+  #{$selector} {
+    @content;
+  }
+}
+
+@mixin variant {
+  @each $key, $tailwindClassName in $variants {
+    @include handleMergeStyle('&--#{$key}') {
+      @apply #{map-get($tailwindClassName, 'base')} fill-current focus:outline-none #{!important};
+
+      &-outline {
+        @apply bg-transparent border #{map-get($tailwindClassName, 'outline')} #{!important};
+      }
+
+      &-transparent {
+        @apply bg-transparent #{map-get($tailwindClassName, 'transparent')} #{!important};
+      }
+    }
+  }
+}
+
+@mixin size {
+  &--xs {
+    @apply text-xs py-1 px-3;
+
+    svg {
+      @apply mt-0.5 float-left;
+    }
+  }
+
+  &--sm {
+    @apply text-sm py-1 px-4;
+
+    svg {
+      @apply mt-0.5 float-left;
+    }
+  }
+
+  &--md {
+    @apply text-base py-1.5 px-5;
+
+    svg {
+      @apply mt-0.5 float-left;
+    }
+  }
+
+  &--lg {
+    @apply text-base py-2 px-7;
+
+    svg {
+      @apply mt-1 float-left;
+    }
+  }
+
+  &--xl {
+    @apply text-lg py-2 px-8;
+
+    svg {
+      @apply mt-1.5 float-left;
+    }
+  }
+}
+
+.#{$prefixClass}-button {
+  @apply w-auto flex focus:outline-none text-white text-sm py-2.5 px-5 rounded-lg bg-gray-500;
+
+  @apply hover:bg-gray-600 text-white;
+
+  @include variant;
+
+  @include size;
+
+  &.no-rounded {
+    @apply rounded-none;
+  }
+
+  &.pill {
+    @apply rounded-full;
+  }
+
+  &.full {
+    @apply flex w-full justify-center items-center;
+  }
+
+  &.text-bold {
+    @apply font-bold;
+  }
+
+  &.disabled {
+    @apply opacity-50 pointer-events-none;
+  }
+
+  &--icon-svg {
+    @apply mr-2
+  }
+
+  &--label {
+    &.with-icon {
+      @apply ml-6;
+    }
+  }
+}

@@ -1,0 +1,10 @@
+version: "3.8"
+
+services:
+  dlabs-fe-development:
+    build:
+      context: ../../
+      dockerfile: docker/development/Dockerfile
+    image: dlabs-fe-development
+    ports:
+      - "3000:80"
