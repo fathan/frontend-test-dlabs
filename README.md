@@ -3,7 +3,7 @@ CMS Content management system administrator dashboard for user.
 
 ## DEMO APP
 
-[frontend-test-dlabs.vercel.com](https://frontend-test-dlabs.vercel.com)
+[frontend-test-dlabs.vercel.com](https://frontend-test-dlabs.vercel.app)
 
 ## Recommended IDE Setup
 
